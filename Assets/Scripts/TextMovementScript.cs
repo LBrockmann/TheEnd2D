@@ -50,7 +50,7 @@ public class TextMovementScript : MonoBehaviour
 
         }
 
-        if (isItalicBold)
+        if (isItalics && isBold)
         {
             rend.sprite = italicBold;
 
@@ -58,6 +58,8 @@ public class TextMovementScript : MonoBehaviour
         
         
     }
+
+   
 
     private void OnTriggerStay2D(Collider2D other)
     {

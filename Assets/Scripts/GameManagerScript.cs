@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public GameObject wordClicked;
     public string wordName;
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,13 @@ public class GameManagerScript : MonoBehaviour
             if (hit.collider != null)
             {
                 Debug.Log("you hit something");
-                if(hit.collider.CompareTag("Word"))
+                if (hit.collider.CompareTag("Word"))
                 {
-                     wordName = hit.collider.gameObject.name;
+                    wordClicked = hit.collider.gameObject;
                 }
             }
         }
+        
+        
     }
 }
