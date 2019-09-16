@@ -4,17 +4,54 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public bool canMove;
     public GameObject wordClicked;
     public string wordName;
+
+    public float xMovement;
+
+    public float yMovement;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canMove = true;
+        xMovement = 0.5f;
+        yMovement = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (wordClicked == canMove)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Debug.Log("Moveright");
+               wordClicked.transform.position = new Vector3(wordClicked.transform.position.x + xMovement, wordClicked.transform.position.y, 0f);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("Moveright");
+                wordClicked.transform.position = new Vector3(wordClicked.transform.position.x - xMovement, wordClicked.transform.position.y, 0f);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Debug.Log("Moveright");
+                wordClicked.transform.position = new Vector3(wordClicked.transform.position.x, wordClicked.transform.position.y + yMovement, 0f);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Debug.Log("Moveright");
+                wordClicked.transform.position = new Vector3(wordClicked.transform.position.x, wordClicked.transform.position.y - yMovement, 0f);
+            }
+
+
+            
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

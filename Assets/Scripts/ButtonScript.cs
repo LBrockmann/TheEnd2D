@@ -7,10 +7,13 @@ public class ButtonScript : MonoBehaviour
 {
     public GameManagerScript gm;
     public int wordCount; // normal 1, italic 2, bold 3, italicbold 4
+
+    public bool canMove;
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.FindWithTag("GameController").GetComponent<GameManagerScript>();
+        
     }
 
     // Update is called once per frame

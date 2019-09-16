@@ -14,21 +14,27 @@ public class TextMovementScript : MonoBehaviour
     public Sprite bold;
     public Sprite italicBold;
 
+    
+    
     public bool isNormal;
     public bool isItalics;
     public bool isBold;
     public bool isItalicBold;
-
+    public float currentY;
+    public float currentX;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+
+       
+        
         if (isNormal)
         {
             rend.sprite = normal;
