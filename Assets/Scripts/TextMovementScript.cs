@@ -13,9 +13,13 @@ public class TextMovementScript : MonoBehaviour
     public Sprite italics;
     public Sprite bold;
     public Sprite italicBold;
-
+    public Sprite normalS;
+    public Sprite italicsS;
+    public Sprite boldS;
+    public Sprite italicBoldS;
     
-    
+    public bool isSansSerrif;
+    public bool isSerrif;
     public bool isNormal;
     public bool isItalics;
     public bool isBold;
@@ -33,36 +37,72 @@ public class TextMovementScript : MonoBehaviour
     void Update()
     {
 
-       
-        
-        if (isNormal)
+
+        if (isSansSerrif)
         {
-            rend.sprite = normal;
-            GetComponent<BoxCollider2D>().sharedMaterial = normalMaterial;
-            //proporties
-            isNormal = false;
+            if (isNormal)
+            {
+                rend.sprite = normal;
+                GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
+                //proporties
+                isNormal = false;
+            }
+
+            if (isItalics && isBold == false)
+            {
+                rend.sprite = italics;
+
+            }
+
+            if (isBold && isItalics == false)
+            {
+                rend.sprite = bold;
+                GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
+
+            }
+
+            if (isItalics && isBold)
+            {
+                rend.sprite = italicBold;
+
+            }
         }
 
-        if (isItalics && isBold == false)
+        if (isSerrif)
         {
-            rend.sprite = italics;
             
+            //Set hitbox here
+            if (isNormal)
+            {
+                rend.sprite = normalS;
+                GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
+                //proporties
+                isNormal = false;
+            }
+
+            if (isItalics && isBold == false)
+            {
+                rend.sprite = italics;
+
+            }
+
+            if (isBold && isItalics == false)
+            {
+                rend.sprite = bold;
+                GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
+
+            }
+
+            if (isItalics && isBold)
+            {
+                rend.sprite = italicBold;
+
+            } 
         }
 
-        if (isBold && isItalics == false)
-        {
-            rend.sprite = bold;
-            GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
 
-        }
 
-        if (isItalics && isBold)
-        {
-            rend.sprite = italicBold;
 
-        }
-        
-        
     }
 
    

@@ -42,7 +42,17 @@ public class ButtonScript : MonoBehaviour
                 gm.wordClicked.GetComponent<TextMovementScript>().isNormal = false;
                 gm.wordClicked.GetComponent<TextMovementScript>().isBold = true;
                 break;
-                
+            
+            case 4:
+                gm.wordClicked.GetComponent<TextMovementScript>().isSansSerrif = true;
+                gm.wordClicked.GetComponent<TextMovementScript>().isSerrif = false;
+                break;
+            
+            case 5: 
+                gm.wordClicked.GetComponent<TextMovementScript>().isSansSerrif = false;
+                gm.wordClicked.GetComponent<TextMovementScript>().isSerrif = true;
+
+                break;
             default:
                     break;
                 
