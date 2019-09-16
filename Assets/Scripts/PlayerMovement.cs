@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float maxVelocity;
     public float jumpforce;
+
+    public GameObject wordHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +46,11 @@ public class PlayerMovement : MonoBehaviour
 
         
 
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+       // other.gameObject = wordHit;
+        
     }
 }

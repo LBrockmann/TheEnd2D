@@ -7,7 +7,13 @@ public class TextMovementScript : MonoBehaviour
     public Rigidbody2D rigbod;
     public SpriteRenderer rend;
     public PhysicsMaterial2D normalMaterial;
-    public PhysicsMaterial2D boldMaterial; 
+    public PhysicsMaterial2D boldMaterial;
+
+    public GameObject shitBox;
+    public GameObject normalHitbox;
+    public GameObject italicHitbox;
+    public GameObject boldHitbox;
+    public GameObject italicBoldHitbox;
     
     public Sprite normal;
     public Sprite italics;
@@ -43,7 +49,7 @@ public class TextMovementScript : MonoBehaviour
             if (isNormal)
             {
                 rend.sprite = normal;
-                GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
+                //normalHitbox.GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
                 //proporties
                 isNormal = false;
             }
@@ -57,7 +63,7 @@ public class TextMovementScript : MonoBehaviour
             if (isBold && isItalics == false)
             {
                 rend.sprite = bold;
-                GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
+                //boldHitbox.GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
 
             }
 
