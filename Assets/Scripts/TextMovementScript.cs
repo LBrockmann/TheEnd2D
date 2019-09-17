@@ -53,9 +53,10 @@ public class TextMovementScript : MonoBehaviour
             if (isNormal)
             {
                 rend.sprite = normal;
-                //normalHitbox.GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
+                GetComponent<BoxCollider2D>().sharedMaterial = normalMaterial;
                 //proporties
                 isNormal = false;
+                Debug.Log("WHY");
             }
 
             if (isItalics && isBold == false)
@@ -67,7 +68,7 @@ public class TextMovementScript : MonoBehaviour
             if (isBold && isItalics == false)
             {
                 rend.sprite = bold;
-                //boldHitbox.GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
+                GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
 
             }
 
@@ -77,7 +78,7 @@ public class TextMovementScript : MonoBehaviour
 
             }
         }
-
+/*
         if (isSerrif)
         {
             
@@ -85,7 +86,7 @@ public class TextMovementScript : MonoBehaviour
             if (isNormal)
             {
                 rend.sprite = normalS;
-                GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
+                GetComponent<BoxCollider2D>().sharedMaterial = normalMaterial;
                 //proporties
                 
             }
@@ -99,16 +100,18 @@ public class TextMovementScript : MonoBehaviour
             if (isBold && isItalics == false)
             {
                 rend.sprite = bold;
-                GetComponent<PolygonCollider2D>().sharedMaterial = boldMaterial;
+                GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
 
             }
 
             if (isItalics && isBold)
             {
+                GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
                 rend.sprite = italicBold;
-
             } 
+            
         }
+        */
 
 
 
@@ -116,13 +119,15 @@ public class TextMovementScript : MonoBehaviour
     }
 
 
-    private void OnCollisionStay(Collision other)
+   private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (isItalics == true || isItalicBold)
+            Debug.Log("Player hit word");
+            if (isItalics || isItalics && isBold)
             {
-                rigbod.AddForce(transform.forward * italicSpeed, ForceMode2D.Impulse); 
+                player.AddForce(transform.right * italicSpeed, ForceMode2D.Impulse); 
+                Debug.Log("ITalic push");
             }
             
         }

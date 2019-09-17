@@ -22,17 +22,17 @@ public class enemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy.transform.position.x > xMax)
-       if (enemy.transform.position.x < xMax)
+        if (enemy.transform.position.x > xMax)
         {
-            enemy.velocity = new Vector2(enemySpeed, yConstant);
-            Debug.Log("moveLeft");
+            enemy.velocity = new Vector2(-enemySpeed, 0f); 
         }
+       
+       
 
-        if (enemy.transform.position.x < xMin)
+        else if (enemy.transform.position.x < xMin)
         {
 
-            enemy.velocity = new Vector2(enemySpeed, yConstant);
+            enemy.velocity = new Vector2(enemySpeed, 0f);
             Debug.Log("Move RIght");
         }
 
