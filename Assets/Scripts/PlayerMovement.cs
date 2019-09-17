@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxVelocity;
     public float jumpforce;
 
+
+    public bool canMove;
     public GameObject wordHit;
     // Start is called before the first frame update
     void Start()
@@ -21,32 +23,34 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigbod.velocity = Vector3.ClampMagnitude(rigbod.velocity, maxVelocity);
-        
-        if (Input.GetKey(KeyCode.D))
+        if (canMove)
         {
-            //rigbod.velocity = new Vector2(speed, rigbod.velocity.y);
-            rigbod.AddForce(new Vector2(speed, 0f));
+            rigbod.velocity = Vector3.ClampMagnitude(rigbod.velocity, maxVelocity);
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                //rigbod.velocity = new Vector2(speed, rigbod.velocity.y);
+                rigbod.AddForce(new Vector2(speed, 0f));
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                //rigbod.velocity = new Vector2(-speed, rigbod.velocity.y);
+                rigbod.AddForce(new Vector2(-speed, 0f));
+            }
+
+            /*else
+            {
+                rigbod.velocity = new Vector2(0f, rigbod.velocity.y);
+            }*/
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rigbod.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                Debug.Log("Jump");
+            }
+
         }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            //rigbod.velocity = new Vector2(-speed, rigbod.velocity.y);
-            rigbod.AddForce(new Vector2(-speed, 0f));
-        }
-
-        /*else
-        {
-            rigbod.velocity = new Vector2(0f, rigbod.velocity.y);
-        }*/
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            rigbod.AddForce(new Vector2(0,jumpforce), ForceMode2D.Impulse);
-            Debug.Log("Jump");
-        }
-
-        
 
     }
 

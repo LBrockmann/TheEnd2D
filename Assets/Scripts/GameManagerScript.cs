@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -9,12 +10,12 @@ public class GameManagerScript : MonoBehaviour
     public string wordName;
 
     public float xMovement;
-
+    public static bool editMode;
     public float yMovement;
     // Start is called before the first frame update
     void Start()
     {
-        canMove = true;
+        editMode = true;
         xMovement = 0.5f;
         yMovement = 1f;
         
@@ -24,7 +25,11 @@ public class GameManagerScript : MonoBehaviour
     void Update()
     {
 
-        if (wordClicked == canMove)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        if (wordClicked == editMode)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
