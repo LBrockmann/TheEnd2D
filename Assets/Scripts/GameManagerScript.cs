@@ -29,7 +29,7 @@ public class GameManagerScript : MonoBehaviour
         {
             SceneManager.LoadScene("SampleScene");
         }
-        if (wordClicked == editMode)
+        if (editMode)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {

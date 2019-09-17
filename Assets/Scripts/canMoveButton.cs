@@ -21,16 +21,22 @@ public class canMoveButton : MonoBehaviour
 
     public void TaskOnClick()
     {
-       if( player.GetComponent<PlayerMovement>().canMove == true)
-       {
-           player.GetComponent<PlayerMovement>().canMove = false;
-           
-       }
-       else if (player.GetComponent<PlayerMovement>().canMove == false)
-       {
-           player.GetComponent<PlayerMovement>().canMove = true;
-       }
+        if (GameManagerScript.editMode == true)
+        {
+            player.GetComponent<PlayerMovement>().canMove = true;
+            player.transform.position = new Vector3(startPoint.position.x,startPoint.position.y,0f);
+            GameManagerScript.editMode = false;
+
+        }
+        
+        else if (GameManagerScript.editMode == false)
+        {
+            player.GetComponent<PlayerMovement>().canMove = false;
+            player.transform.position = new Vector3(startPoint.position.x,startPoint.position.y,0f);
+            GameManagerScript.editMode = true;
+        }
        
-       player.transform.position = new Vector3(startPoint.position.x,startPoint.position.y,0f);
+       
+       
     }
 }

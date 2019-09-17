@@ -47,37 +47,39 @@ public class TextMovementScript : MonoBehaviour
     void Update()
     {
 
-
-        if (isSansSerrif)
+        if (GameManagerScript.editMode)
         {
-            if (isNormal)
+            if (isSansSerrif)
             {
-                rend.sprite = normal;
-                GetComponent<BoxCollider2D>().sharedMaterial = normalMaterial;
-                //proporties
-                isNormal = false;
-                Debug.Log("WHY");
+                if (isNormal)
+                {
+                    rend.sprite = normal;
+                    GetComponent<BoxCollider2D>().sharedMaterial = normalMaterial;
+                    //proporties
+                    isNormal = false;
+                    Debug.Log("WHY");
+                }
+
+                if (isItalics && isBold == false)
+                {
+                    rend.sprite = italics;
+
+                }
+
+                if (isBold && isItalics == false)
+                {
+                    rend.sprite = bold;
+                    GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
+
+                }
+
+                if (isItalics && isBold)
+                {
+                    rend.sprite = italicBold;
+
+                }
             }
 
-            if (isItalics && isBold == false)
-            {
-                rend.sprite = italics;
-
-            }
-
-            if (isBold && isItalics == false)
-            {
-                rend.sprite = bold;
-                GetComponent<BoxCollider2D>().sharedMaterial = boldMaterial;
-
-            }
-
-            if (isItalics && isBold)
-            {
-                rend.sprite = italicBold;
-
-            }
-        }
 /*
         if (isSerrif)
         {
@@ -112,7 +114,7 @@ public class TextMovementScript : MonoBehaviour
             
         }
         */
-
+        }
 
 
 
