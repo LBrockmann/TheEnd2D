@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class enemyMovement : MonoBehaviour
@@ -13,6 +14,14 @@ public class enemyMovement : MonoBehaviour
     public float enemySpeed;
 
     public float yConstant;
+
+    public bool moveLeft;
+
+    public bool moveRight;
+
+    public GameObject player;
+
+    public Transform startpoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +31,33 @@ public class enemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy.transform.position.x > xMax)
+        if (moveRight)
         {
-            enemy.velocity = new Vector2(-enemySpeed, 0f); 
+            enemy.velocity = (new Vector2(enemySpeed, 0f));
         }
-       
-       
-
-        else if (enemy.transform.position.x < xMin)
+        else
         {
-
-            enemy.velocity = new Vector2(enemySpeed, 0f);
-            Debug.Log("Move RIght");
+            enemy.velocity = (new Vector2(-enemySpeed, 0f)); 
         }
 
+        if (transform.position.x >= xMax)
+        {
+            moveRight = false;
+        }
+
+        if (transform.position.x <= xMin)
+        {
+            moveRight = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Respawn");
+            player.transform.position = new Vector2(startpoint.position.x, startpoint.position.y);
+        }
     }
 }
 
