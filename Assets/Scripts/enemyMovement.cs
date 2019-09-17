@@ -20,7 +20,7 @@ public class enemyMovement : MonoBehaviour
     public bool moveRight;
 
     public GameObject player;
-
+    public bool mover;
     public Transform startpoint;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,9 @@ public class enemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveRight)
+        if(mover){
+        
+            if (moveRight)
         {
             enemy.velocity = (new Vector2(enemySpeed, 0f));
         }
@@ -48,6 +50,7 @@ public class enemyMovement : MonoBehaviour
         if (transform.position.x <= xMin)
         {
             moveRight = true;
+        }
         }
     }
 
