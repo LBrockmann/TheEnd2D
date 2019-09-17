@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 public class TextMovementScript : MonoBehaviour
 {
@@ -32,11 +34,13 @@ public class TextMovementScript : MonoBehaviour
     public bool isItalicBold;
     public float currentY;
     public float currentX;
-    
+
+    public float italicSpeed;
+    public Rigidbody2D player;
     // Start is called before the first frame update
     void Start()
     {
-       
+        isSansSerrif = true;
     }
 
     // Update is called once per frame
@@ -83,7 +87,7 @@ public class TextMovementScript : MonoBehaviour
                 rend.sprite = normalS;
                 GetComponent<PolygonCollider2D>().sharedMaterial = normalMaterial;
                 //proporties
-                isNormal = false;
+                
             }
 
             if (isItalics && isBold == false)
@@ -111,10 +115,16 @@ public class TextMovementScript : MonoBehaviour
 
     }
 
-   
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnCollisionStay(Collision other)
     {
-         
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (isItalics == true || isItalicBold)
+            {
+                rigbod.AddForce(transform.forward * italicSpeed, ForceMode2D.Impulse); 
+            }
+            
+        }
     }
 }

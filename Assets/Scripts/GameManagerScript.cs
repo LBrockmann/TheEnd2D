@@ -16,7 +16,8 @@ public class GameManagerScript : MonoBehaviour
     {
         canMove = true;
         xMovement = 0.5f;
-        yMovement = 2f;
+        yMovement = 1f;
+        
     }
 
     // Update is called once per frame

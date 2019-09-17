@@ -48,9 +48,9 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision other)
+    private void OnCollisionStay2D(Collision other)
     {
-       // other.gameObject = wordHit;
-        
+       // other.Collision.gameObject = wordHit;
+
     }
 }
