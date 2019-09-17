@@ -25,12 +25,14 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetKey(KeyCode.D))
         {
-            rigbod.velocity = new Vector2(speed, rigbod.velocity.y);
+            //rigbod.velocity = new Vector2(speed, rigbod.velocity.y);
+            rigbod.AddForce(new Vector2(speed, 0f));
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            rigbod.velocity = new Vector2(-speed, rigbod.velocity.y);
+            //rigbod.velocity = new Vector2(-speed, rigbod.velocity.y);
+            rigbod.AddForce(new Vector2(-speed, 0f));
         }
 
         /*else
